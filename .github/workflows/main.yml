@@ -17,6 +17,9 @@ jobs:
       - name: Install Expo CLI
         run: npm install -g eas-cli
       - name: Authenticate with Expo
-        run: eas login --username ${{ secrets.EXPO_USERNAME }} --password ${{ secrets.EXPO_PASSWORD }}
+        env:
+          EXPO_USERNAME: ${{ secrets.EXPO_USERNAME }}
+          EXPO_PASSWORD: ${{ secrets.EXPO_PASSWORD }}
+        run: echo $EXPO_USERNAME && echo $EXPO_PASSWORD | eas login
       - name: Start EAS Build for Android
         run: eas build -p android --non-interactive
