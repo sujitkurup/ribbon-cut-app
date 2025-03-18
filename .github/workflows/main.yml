@@ -21,4 +21,5 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas whoami
       - name: Start EAS Build for Android
-        run: eas build -p android --non-interactive
+        env: EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: eas build -p android --profile production --non-interactive
